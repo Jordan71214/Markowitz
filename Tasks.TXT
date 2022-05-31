@@ -1,0 +1,12 @@
+Finish the MVS model.
+Do not use w_plus and w_minus to create variable. Cause of that could be calculated by li_plus, li_minus, si_plus, si_minus. So use these to generate the variable.
+
+There are 2 types of this model.
+1. -> The first one of the estimate, so there's no rebalance sign(wi+0, wi-0).
+2. -> The Second one with rebalance.
+
+If could estimate weight with using rebalance by constrain, its clearly code.
+If could not estimate weight with rebalance by constrain, put it into objective.
+
+Needed to put all the objective in to one line code.
+
