@@ -10,3 +10,23 @@ If could not estimate weight with rebalance by constrain, put it into objective.
 
 Needed to put all the objective in to one line code.
 
+
+0602 issue:
+Buying and short selling have the upper bounds and lower bounds.
+Can not hold the securities for both buying and short selling. In other words, constraint securities holding type by (ui + vi = yi)
+
+Action                  Binary variable
+-------------------------------
+Long                    ui = 1, vi = 0, yi = 1
+Short selling           ui = 0, vi = 1, yi = 1
+No investing            ui = 0, vi = 0, yi = 0
+
+First rebalancing do not consider the previous weight, so the LM ans SM should be 0.
+LM and LP should constrain each other. Should not happened the following sets: {LM>0, LP!=0}. {LM!=0, LM>0}.
+
+0603 issue:
+concat all the objective.
+add all the constraint, but the problem is that after added the constraint (ui + vi <= yi),
+it could be like (ui + vi <= 1), its going to be infeasible problem.
+Could not find out how to fix this problem named MILP.
+Try to fixed with another package. [gurobi]
