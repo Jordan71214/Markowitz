@@ -5,7 +5,7 @@ import numpy as np
 
 wb = pd.read_excel("Naive_S_P500.xlsx" , sheet_name=None)
 ret = copy.deepcopy(wb["return"].drop(columns=["Unnamed: 0"]))
-assets_obs = ret.iloc[:100, 1:5]
+assets_obs = ret.iloc[:100, 1:397]
 n = assets_obs.shape[1]
 
 P = np.asmatrix(np.mean(assets_obs, axis=0))
@@ -32,4 +32,9 @@ print(len(w))
 print('weight: ', [x.value for x in w])
 
 
+total_weight = 0
+for i in [x.value for x in w]:
+    total_weight += i[0]
+print('total_weight', total_weight)
+print(max([x.value for x in w]))
 
